@@ -37,15 +37,19 @@ app.get('/test', function(req, res) {
     res.send(mockAPIResponse)
 })
 
-// app.post('/language', function(req, res) {
-//     textapi.language({ text: req.body.lang }, function(error, response) {
-//         res.send(response);
-//     });
 
 app.post('/sentiment', function(req, res) {
+    console.log("URL=", req.body.url)
     textapi.sentiment({ url: req.body.url }, function(error, response) {
-        res.send(response);
+        if (error === null) {
+            console.log("response=", response)
+            res.send(response);
+        } else {
+            console.log("Error=", error)
+            res.send({
+                status: "faild",
+                message: "No response was received"
+            })
+        }
     });
-
-
 })
