@@ -1,6 +1,6 @@
 const dotenv = require('dotenv');
 dotenv.config();
-
+var bodyParser = require('body-parser')
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
@@ -11,7 +11,10 @@ var textapi = new aylien({
 });
 
 
+
+
 const app = express()
+app.use(bodyParser.json())
 
 app.use(express.static('dist'))
 
