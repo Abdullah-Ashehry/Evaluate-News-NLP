@@ -30,3 +30,16 @@ app.listen(8081, function() {
 app.get('/test', function(req, res) {
     res.send(mockAPIResponse)
 })
+
+// app.post('/language', function(req, res) {
+//     textapi.language({ text: req.body.lang }, function(error, response) {
+//         res.send(response);
+//     });
+
+app.post('/sentiment', function(req, res) {
+    textapi.sentiment({ url: req.body.url }, function(error, response) {
+        res.send(response);
+    });
+
+
+})
