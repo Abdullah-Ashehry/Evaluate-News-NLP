@@ -29,9 +29,10 @@ function handleSubmit(event) {
     }
 }
 
-export function getValueFromForm() {
+export function getValueFromForm(x) {
     let formText = x;
     return formText;
 }
+
 
 export { handleSubmit }
