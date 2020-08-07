@@ -1,45 +1,38 @@
+import { validateContent } from './validator';
+
 function handleSubmit(event) {
+
     event.preventDefault()
 
+    function getValueFromForm() {
+        let formText = document.getElementById('name').value
+        return formText;
+    }
     // check what text was put into the form field
-    let formText = document.getElementById('name').value
-    Client.checkForName(formText)
+    formText = getValueFromForm();
+    if (Client.validateContent(formText)) {
 
-    console.log("::: Form Submitted :::")
-        // fetch('http://localhost:8081/test')
-        //     .then(res => res.json())
-        //     .then(function(res) {
-        //         document.getElementById('results').innerHTML = res.message
-        //     })
+        Client.checkForName(formText)
 
-    // fetch("http://localhost:8081/language", {
-    //         method: 'POST',
-    //         mode: 'cors',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({ lang })
-    //     })
-    //     .then(res => res.json())
-    //     .then(function(res) {
-    //         document.getElementById('results').innerHTML = res.results
-    //     })
+        export { getValueFromForm }
 
+        console.log("::: Form Submitted :::")
 
-    fetch("http://localhost:8081/sentiment", {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ url: formText })
-        })
-        .then(res => res.json())
-        .then(function(res) {
-            document.getElementById('results').innerHTML = res.polarity
-        })
-
-
+        fetch("http://localhost:8081/sentiment", {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ url: formText })
+            })
+            .then(res => res.json())
+            .then(function(res) {
+                document.getElementById('results').innerHTML = res.polarity
+            })
+    } else {
+        alert('The link is incorrect');
+    }
 }
 
 export { handleSubmit }
