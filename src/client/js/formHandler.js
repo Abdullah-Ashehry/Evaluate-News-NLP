@@ -1,15 +1,15 @@
-import { validateContent } from './validator';
-
 function handleSubmit(event) {
 
     event.preventDefault()
 
-    function getValueFromForm() {
-        let formText = document.getElementById('name').value
+    export function getValueFromForm() {
+        let formText = x;
         return formText;
     }
     // check what text was put into the form field
-    formText = getValueFromForm();
+    x = document.getElementById('name').value
+    formText = getValueFromForm(x);
+
     if (Client.validateContent(formText)) {
 
         Client.checkForName(formText)
