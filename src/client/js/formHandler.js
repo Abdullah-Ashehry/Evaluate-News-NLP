@@ -2,10 +2,6 @@ function handleSubmit(event) {
 
     event.preventDefault()
 
-    export function getValueFromForm() {
-        let formText = x;
-        return formText;
-    }
     // check what text was put into the form field
     x = document.getElementById('name').value
     formText = getValueFromForm(x);
@@ -13,8 +9,6 @@ function handleSubmit(event) {
     if (Client.validateContent(formText)) {
 
         Client.checkForName(formText)
-
-        export { getValueFromForm }
 
         console.log("::: Form Submitted :::")
 
@@ -33,6 +27,11 @@ function handleSubmit(event) {
     } else {
         alert('The link is incorrect');
     }
+}
+
+export function getValueFromForm() {
+    let formText = x;
+    return formText;
 }
 
 export { handleSubmit }
