@@ -3,8 +3,8 @@ function handleSubmit(event) {
     event.preventDefault()
 
     // check what text was put into the form field
-    x = document.getElementById('name').value
-    formText = getValueFromForm(x);
+    const x = document.getElementById('name').value
+    const formText = getValueFromForm(x);
 
     if (Client.validateContent(formText)) {
 
